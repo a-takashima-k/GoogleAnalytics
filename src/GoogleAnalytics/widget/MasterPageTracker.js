@@ -63,7 +63,7 @@ define("GoogleAnalytics/widget/MasterPageTracker", [
 
         _insertGoogleAnalytics: function () {
             logger.debug(this.id + "._insertGoogleAnalytics");
-            this._addGoogle(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
+            this._addGoogle(window, document, "script", "https://www.google-analytics.com/analytics.js", "ga");
 
             if (typeof window.mxGoogleAnalytics === "undefined") {
                 this._replaceTags(this.uaTrackCode, lang.hitch(this, function (text) {
@@ -84,6 +84,7 @@ define("GoogleAnalytics/widget/MasterPageTracker", [
 
                 }));
             }
+            ga("set", "checkProtocolTask", null);
         },
         _buildFullPath: function(prefix, includePageName, oriMendixPath) {
           if (includePageName) {
